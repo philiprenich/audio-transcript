@@ -1,0 +1,8 @@
+[data-time-start] {
+	transition: box-shadow .15s linear, background-color .15s linear;
+	cursor: pointer;
+}
+.audio-transcript-highlight {
+    box-shadow: 0 0 0px 0.5em rgba(102, 102, 153, 0.5);
+    background-color: rgba(102, 102, 153, 0.5);
+}

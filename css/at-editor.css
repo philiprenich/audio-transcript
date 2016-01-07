@@ -1,0 +1,29 @@
+.audio-transcript-highlight {
+    box-shadow: 0 0 0px 0.5em rgba(102, 102, 153, 0.5);
+    background-color: rgba(102, 102, 153, 0.5);
+}
+
+[data-time-start] {
+	cursor: pointer;
+}
+
+/* Edit */
+
+.syncText .at-transcript p {
+	position: relative;
+	margin-left: 7em;
+}
+.syncText .controls {
+    position: absolute;
+    left: -7em;
+    top: 0;
+    cursor: default;
+}
+.syncText .controls span:not(:last-child) {
+	margin-right: .25em;
+}
+.syncText .controls .adjust {
+	font-size: 1.5em;
+	font-weight: bold;
+	cursor: pointer;
+}
