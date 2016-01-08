@@ -106,16 +106,12 @@ function at_build_player($post) {
 	return array( 'player' => $player, 'name' => $name );
 
 }
-function at_front_end($post) {
+function at_front_end($content) {
+	$post = get_post( get_the_ID() );
 	$player = at_build_player($post);
 
-	$post->post_content = $player['player'] . '<div class="at-transcript" data-name="' . $player['name'] . '">' . $post->post_content . '</div>';
+	return $player ? $player['player'] . '<div class="at-transcript" data-name="' . $player['name'] . '">' . $content . '</div>' : $content;
 }
 
-//WP_Post Object ( [ID] => 56 [post_author] => 1 [post_date] => 2016-01-02 10:06:12 [post_date_gmt] => 2016-01-02 10:06:12
-//[post_content] => [post_title] => 1105 [post_excerpt] => [post_status] => publish [comment_status] => open [ping_status] => open [post_password] =>
-//[post_name] => 1105 [to_ping] => [pinged] => [post_modified] => 2016-01-02 10:12:33 [post_modified_gmt] => 2016-01-02 10:12:33 [post_content_filtered] => [
-//post_parent] => 0 [guid] => http://localhost/audio-transcript/plugin/?p=56 [menu_order] => 0 [post_type] => post [post_mime_type] => [comment_count] => 0 [filter] => raw )
-
-add_action( 'the_post', 'at_front_end' );
+add_filter( 'the_content', 'at_front_end' );
 ?>

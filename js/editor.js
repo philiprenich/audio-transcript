@@ -8,7 +8,8 @@ $('.selectAudio').click(function() {
         tb_remove();
     }
 
-    tb_show('', 'media-upload.php?post_id=1&type=audio&TB_iframe=true&tab=library');
+    var id = $('#post_ID').val();
+    tb_show('', 'media-upload.php?post_id=' + id + '&type=audio&TB_iframe=true&tab=library');
     return false;
 });
 
