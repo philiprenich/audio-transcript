@@ -44,6 +44,8 @@ function at_upload_meta_box_cb( $post ) {
 
 	<p class="howto <?php echo $player ? 'hide' : '' ?> selectAudioHelp">Select or record an audio transcript of this post.</p>
 	<!-- <p class="selectedAudio"><?php echo array_pop( explode('/', $value) ) ?></p> -->
+	<!-- thickbox bug causes window to not be correct size:
+	https://core.trac.wordpress.org/ticket/27473 -->
 	<p><a href="#TB_inline?width=800&height=500&inlineId=syncAudioText" title="Sync audio and text" class="thickbox syncAudio <?php echo $player ? '' : 'hide' ?>">Sync audio and text</a></p>
 	<p class="howto <?php echo $player ? '' : 'hide' ?> syncAudioHelp">Set the audio timestamp for each paragraph.</p>
 
