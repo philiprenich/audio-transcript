@@ -7,6 +7,27 @@
 	cursor: pointer;
 }
 
+#at_upload .hide {
+	display: none !important;
+}
+
+.removeAudio {
+    width: 29px;
+    height: 29px;
+	color: #666;
+    text-align: center;
+    line-height: 29px;
+    text-decoration: none;
+    vertical-align: text-top;
+}
+.removeAudio:before {
+	content: '\f158';
+    font: normal 20px/29px 'dashicons';
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 /* Edit */
 
 .syncText .at-transcript p {

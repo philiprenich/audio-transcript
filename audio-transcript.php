@@ -38,9 +38,22 @@ function at_upload_meta_box_cb( $post ) {
 	$value = get_post_meta( $post->ID, 'at_audio_file', true );
 	$player = at_build_player($post);
 	?>
-	<input class="selectAudio" type="button" value="Select audio file" name="at_audio_file_button" id="at_audio_file_button" />
+	<p class="selectAudio <?php echo $player ? 'hide' : '' ?>">
+		<input class="button" type="button" value="Select audio" name="at_audio_file_button" id="at_audio_file_button" />
+	</p>
+
+	<p class="howto <?php echo $player ? 'hide' : '' ?> selectAudioHelp">Select or record an audio transcript of this post.</p>
+	<!-- <p class="selectedAudio"><?php echo array_pop( explode('/', $value) ) ?></p> -->
+	<p><a href="#TB_inline?width=800&height=500&inlineId=syncAudioText" title="Sync audio and text" class="thickbox syncAudio <?php echo $player ? '' : 'hide' ?>">Sync audio and text</a></p>
+	<p class="howto <?php echo $player ? '' : 'hide' ?> syncAudioHelp">Set the audio timestamp for each paragraph.</p>
+
+	<p class="selectedAudio <?php echo $player ? '' : 'hide' ?>">
+		<span><?php echo array_pop( explode('/', $value) ) ?></span> <a href="#" class="removeAudio"></a>
+		<!--or
+		<input class="recordAudio button" type="button" value="Record audio" name="at_audio_record_button" id="at_audio_record_button" />-->
+	</p>
+
 	<input type="hidden" value="<?php echo $value ?>" name="at_audio_file" id="at_audio_file" />
-	<div class="selectedAudio"><?php echo array_pop( explode('/', $value) ) ?></div>
 	<div id="syncAudioText" style="display: none">
 		<div class="syncInfo">
 			<button class="edit">Stop editing</button>
@@ -55,7 +68,6 @@ function at_upload_meta_box_cb( $post ) {
 			</div>
 		</div>
 	</div>
-	<a href="#TB_inline?width=800&height=500&inlineId=syncAudioText" title="Sync audio and text" class="thickbox syncAudio">Sync up audio and text</a>
 	<?php
 }
 
