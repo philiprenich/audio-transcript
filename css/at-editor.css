@@ -29,6 +29,13 @@
 }
 
 /* Edit */
+.syncInfo {
+    padding-bottom: 1em;
+    border-bottom: 1px solid #e5e5e5;
+}
+.syncInfo button.button {
+    margin-left: 1.5em;
+}
 
 .syncText .at-transcript p {
 	position: relative;
@@ -47,4 +54,33 @@
 	font-size: 1.5em;
 	font-weight: bold;
 	cursor: pointer;
+}
+
+
+/* Instructions */
+.syncInfo .postbox {
+    margin-top: 15px;
+    background-color: rgba(0,0,0,.04);
+}
+.syncInfo .handlediv:before {
+    right: 12px;
+    font: 400 20px/1 dashicons;
+    speak: none;
+    display: inline-block;
+    padding: 8px 10px;
+    top: 0;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-decoration: none!important;
+    content: '\f142';
+}
+.syncInfo .postbox.closed .handlediv:before {
+    content: '\f140';
+}
+.syncInfo h3 {
+    font-size: 14px;
+    padding: 8px 12px;
+    margin: 0;
+    line-height: 1.4;
 }

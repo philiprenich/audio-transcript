@@ -56,12 +56,21 @@ function at_upload_meta_box_cb( $post ) {
 	<input type="hidden" value="<?php echo $value ?>" name="at_audio_file" id="at_audio_file" />
 	<div id="syncAudioText" style="display: none">
 		<div class="syncInfo">
-			<button class="edit">Stop editing</button>
-			<button class="sendSync">Save</button>
+			<div class="postbox">
+				<div class="handlediv" title="Click to toggle"><br></div>
+				<h3 class="hndle ui-sortable-handle"><span>Instructions</span></h3>
+				<div class="inside">
+					<p>To sync the audio to the correct portion of the transcript, play the audio and click on the relevant paragraph when the audio reaches that point. This will set a timestamp on the paragraph.</p>
+					<p>To test that the timestamps are correct, click Stop editing. This will allow you to click paragraphs to jump the audio to their timestamps.</p>
+					<p>Timestamps can be fine tuned using the arrows on either side of the timestamp while editing.</p>
+				</div>
+			</div>
+			<?php
+				echo $player['player'];
+			?>
+			<button class="edit button">Stop editing</button>
+			<button class="sendSync button button-primary">Save</button>
 		</div>
-	<?php
-		echo $player['player'];
-	?>
 		<div class="syncText">
 			<div class="at-transcript" data-name="<?php echo $player['name'] ?>">
 				<?php echo apply_filters( 'the_content', $post->post_content ); ?>
