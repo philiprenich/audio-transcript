@@ -3,7 +3,7 @@
 * Plugin Name: Audio Transcript
 * Plugin URI: http://philiprenich.com
 * Description: Sync an audio file with a text transcript
-* Version: 0.1
+* Version: 0.2
 * Author: Philip Renich
 * Author URI: http://philiprenich.com
 */
