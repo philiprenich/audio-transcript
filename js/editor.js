@@ -11,6 +11,10 @@ var toggleAudioControls = function(player) {
 }
 
 $('.selectAudio').click(function() {
+    var bak_send_to_editor;
+    if(typeof window.send_to_editor == 'function') {
+        bak_send_to_editor = window.send_to_editor;
+    }
     window.send_to_editor = function(html) {
         var url = $(html).attr('href');
         $('.selectedAudio > span').text( url.split('/').pop() );
@@ -19,6 +23,8 @@ $('.selectAudio').click(function() {
         toggleAudioControls(true);
 
         tb_remove();
+
+        window.send_to_editor = bak_send_to_editor;
     }
 
     var id = $('#post_ID').val();
