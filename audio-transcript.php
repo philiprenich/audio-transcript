@@ -1,7 +1,7 @@
 <?php
 /*
 * Plugin Name: Audio Transcript
-* Plugin URI: http://philiprenich.com
+* Plugin URI: https://at.philiprenich.com
 * Description: Sync an audio file with a text transcript
 * Version: 0.2
 * Author: Philip Renich
