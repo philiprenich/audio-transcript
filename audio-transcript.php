@@ -43,6 +43,8 @@ function at_upload_meta_box_cb( $post ) {
 	</p>
 
 	<p class="howto <?php echo $player ? 'hide' : '' ?> selectAudioHelp">Select or record an audio transcript of this post.</p>
+
+	<p class="howto hide fileUrlHelp">You must first set the Link URL using the File URL button before Inserting into Post.</p>
 	<!-- <p class="selectedAudio"><?php echo array_pop( explode('/', $value) ) ?></p> -->
 	<!-- thickbox bug causes window to not be correct size:
 	https://core.trac.wordpress.org/ticket/27473 -->

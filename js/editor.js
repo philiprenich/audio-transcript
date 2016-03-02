@@ -11,16 +11,23 @@ var toggleAudioControls = function(player) {
 }
 
 $('.selectAudio').click(function() {
+    $('.fileUrlHelp').addClass('hide');
+
     var bak_send_to_editor;
     if(typeof window.send_to_editor == 'function') {
         bak_send_to_editor = window.send_to_editor;
     }
     window.send_to_editor = function(html) {
         var url = $(html).attr('href');
-        $('.selectedAudio > span').text( url.split('/').pop() );
-        $('#at_audio_file').val( url );
+        if(url == undefined) {
+            alert('You must first set the Link URL using the File URL button before Inserting into Post.');
+            $('.fileUrlHelp').removeClass('hide');
+        } else {
+            $('.selectedAudio > span').text( url.split('/').pop() );
+            $('#at_audio_file').val( url );
 
-        toggleAudioControls(true);
+            toggleAudioControls(true);
+        }
 
         tb_remove();
 
