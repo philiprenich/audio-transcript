@@ -28,7 +28,7 @@ $('.selectAudio').click(function() {
     }
 
     var id = $('#post_ID').val();
-    tb_show('', 'media-upload.php?post_id=' + id + '&type=audio&TB_iframe=true&tab=library');
+    tb_show('', 'media-upload.php?post_id=' + id + '&type=audio&tab=library&TB_iframe=true');
     return false;
 });
 
