@@ -10,6 +10,9 @@
 
 defined( 'ABSPATH' ) or die();
 
+require_once(WP_CONTENT_DIR . '/plugins/audio-transcript/media.php');
+
+
 function my_admin_scripts() {
 	wp_enqueue_script('at-editor', plugins_url() . '/audio-transcript/js/editor.js', array('jquery','media-upload','thickbox'), false, true);
 	wp_enqueue_script('at-sync', plugins_url() . '/audio-transcript/js/sync.js', ['jquery'], false, true);
