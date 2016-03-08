@@ -19,15 +19,26 @@ $('.selectAudio').click(function() {
     }
     window.send_to_editor = function(html) {
         var url = $(html).attr('href');
-        if(url == undefined) {
-            alert('You must first set the Link URL using the File URL button before Inserting into Post.');
-            $('.fileUrlHelp').removeClass('hide');
-        } else {
-            $('.selectedAudio > span').text( url.split('/').pop() );
-            $('#at_audio_file').val( url );
+        var name = url.split('/').pop();
 
-            toggleAudioControls(true);
-        }
+        $('.selectedAudio > span').text( name );
+        $('#at_audio_file').val( url );
+
+        var $audio = $('<audio>');
+        $audio
+            .attr('preload', 'metadata')
+            .attr('data-at-transcript', name)
+            .prop('controls', true)
+            .addClass('at-audio');
+        $audio.append('<source>');
+        $audio.find('source')
+            .attr('type', 'audio/mp3')
+            .attr('src', url);
+        $('#syncAudioText').find('.postbox').after( $audio ).end()
+            .find('.at-transcript').attr('data-name', name);
+
+
+        toggleAudioControls(true);
 
         tb_remove();
 
