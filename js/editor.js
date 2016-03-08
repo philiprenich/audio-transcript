@@ -24,18 +24,29 @@ $('.selectAudio').click(function() {
         $('.selectedAudio > span').text( name );
         $('#at_audio_file').val( url );
 
-        var $audio = $('<audio>');
+        var $audio = $('#syncAudioText audio') || $('<audio>');;
+
         $audio
             .attr('preload', 'metadata')
             .attr('data-at-transcript', name)
             .prop('controls', true)
-            .addClass('at-audio');
-        $audio.append('<source>');
-        $audio.find('source')
-            .attr('type', 'audio/mp3')
-            .attr('src', url);
-        $('#syncAudioText').find('.postbox').after( $audio ).end()
-            .find('.at-transcript').attr('data-name', name);
+            .addClass('at-audio')
+            .empty().append('<source>')
+            .find('source')
+                .attr('type', 'audio/mp3')
+                .attr('src', url);
+
+        $('#syncAudioText')
+            .find('audio')
+                .remove()
+                .end()
+            .find('.postbox')
+                .after( $audio )
+                .end()
+            .find('.at-transcript')
+                .attr('data-name', name);
+
+        $audio[0].load();
 
 
         toggleAudioControls(true);
@@ -72,7 +83,13 @@ $('.syncAudio').click(function() {
 });
 
 $('.sendSync').click(function() {
-    var content = $('.syncText .at-transcript').find('.controls').remove().end().html();
+    var content = $('.syncText .at-transcript')
+                    .find('.controls').remove().end()
+                    .find('.audio-transcript-highlight').each(function(i,el) {
+                        $(el).removeClass('audio-transcript-highlight')
+                    }).end()
+                    .html();
+
     if( content.lastIndexOf('>&nbsp;') == content.length - 7 ) { // Remove trailing hard-coded space
         content = content.slice(0, -6);
     }
