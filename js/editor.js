@@ -24,7 +24,7 @@ $('.selectAudio').click(function() {
         $('.selectedAudio > span').text( name );
         $('#at_audio_file').val( url );
 
-        var $audio = $('#syncAudioText audio') || $('<audio>');;
+        var $audio = $('#syncAudioText audio').length ? $('#syncAudioText audio') : $('<audio>');
 
         $audio
             .attr('preload', 'metadata')

@@ -383,6 +383,33 @@ function at_get_media_item( $attachment_id, $args = null ) {
     <input type='hidden' class='text urlfield' name='attachments[$attachment_id][url]' value='$post->guid'>";
 
 
+    $defaults = array(
+        'input'         => 'text',
+        'required'      => false,
+        'value'         => '',
+        'extra_rows'    => array(),
+        'show_in_edit'  => true,
+        'show_in_modal' => true,
+    );
+    $hidden_fields = array();
+    foreach ( $form_fields as $id => $field ) {
+        if ( $id[0] == '_' )
+            continue;
+
+        if ( !empty( $field['tr'] ) ) {
+            $item .= $field['tr'];
+            continue;
+        }
+
+        $field = array_merge( $defaults, $field );
+        $name = "attachments[$attachment_id][$id]";
+
+        if ( $field['input'] == 'hidden' ) {
+            $hidden_fields[$name] = $field['value'];
+            continue;
+        }
+    }
+
     foreach ( $hidden_fields as $name => $value )
         $item .= "\t<input type='hidden' name='$name' id='$name' value='" . esc_attr( $value ) . "' />\n";
 
